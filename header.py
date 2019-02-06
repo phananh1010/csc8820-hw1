@@ -1,0 +1,3 @@
+Y=22
+PACKET_SIZE=9
+TEMPLATE = '{{0:0{}}}'.format(PACKET_SIZE)
