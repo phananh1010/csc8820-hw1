@@ -1,9 +1,7 @@
 import socket
 import threading
 import timeit
-
- 
-
+import time
 
 import header
 import lib
@@ -49,11 +47,24 @@ class EndPoint(object):#including client and server
 
 
         
-    def send_msg(self, item):
+    def send_msg(self, item, msg=''):
         dat = header.TEMPLATE.format(item)
         self.sock_sender.send(bytes(dat))
-        lib.log_prefix(self.name, 'sent data {} {}'.format(dat, timeit.default_timer()%10000))
         
+        if msg == '':
+            msg = 'sent data'
+        lib.log_prefix_template(self.name, msg, dat)
+
+        #simulated delay
+        time.sleep(0.050)
+        
+    def close(self):
+        #only need to close client socket
+        self.sock_sender.shutdown(socket.SHUT_RDWR)
+        self.sock_sender.close()
+        
+        #self.sock_receiver.shutdown(socket.SHUT_RDWR)
+        #self.sock_receiver.close()
 
         
         
