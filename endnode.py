@@ -37,14 +37,9 @@ class EndPoint(object):#including client and server
         t = threading.Thread(target=self.accept)
         t.start()
         
-        
-        
-        
-        
+
     def connect(self):
         self.sock_sender.connect((self.dest_addr, self.dest_port))#'localhost', 6788
-        
-
 
         
     def send_msg(self, item, msg=''):
@@ -57,6 +52,7 @@ class EndPoint(object):#including client and server
 
         #simulated delay
         time.sleep(0.050)
+        
         
     def close(self):
         #only need to close client socket
