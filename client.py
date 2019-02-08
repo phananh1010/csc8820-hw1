@@ -3,6 +3,8 @@ import header
 import lib
 import timeit
 
+import numpy as np
+
 class Client(endnode.EndPoint):
     buf_recv = None
     
@@ -33,7 +35,8 @@ class Client(endnode.EndPoint):
         return result
     
     def send_nak(self, nak_list):
-        for item in nak_list:
+        np.random.shuffle(nak_list)
+        for item in nak_list[:header.CLIENT_NAKCOUNT]:
             self.send_msg(item, msg='sent NAK')
             
     def handle_timeout(self):

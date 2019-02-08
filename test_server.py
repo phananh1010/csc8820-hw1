@@ -1,6 +1,8 @@
 #CODE USAGE for SERVER
 import server
 import time
+import sys
+
 
 print '############################'
 print 'SERVER SIDE STARTED'
@@ -12,3 +14,5 @@ time.sleep(2)
 s.connect()
 time.sleep(1)
 s.push_data()
+
+print 'TOTAL number of TRY: {}'.format(s.stats.dat[s.stats.TRY])

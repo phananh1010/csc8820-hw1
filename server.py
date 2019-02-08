@@ -1,15 +1,19 @@
-import endnode
-import header
 import Queue
 import timeit
 import threading
-import lib
 import numpy as np
+
+import endnode
+import header
+import statistic
+import lib
 
 class Server(endnode.EndPoint):
     buf_recv = None
+    stats = None
     def __init__(self, name, local_addr, local_port, dest_addr, dest_port):
         self.buf_recv = Queue.Queue()
+        self.stats = statistic.Stats()
         t2 = threading.Thread(target=self.resend_nak)
         t2.start()
         super(Server, self).__init__(name, local_addr, local_port, dest_addr, dest_port)
@@ -39,6 +43,7 @@ class Server(endnode.EndPoint):
             if nak == header.PACKET_CLOSE:
                 break
             else:
+                self.stats.log(self.stats.TRY)
                 self.send_msg(nak, msg='resent (NAK)')            
             
             
@@ -48,4 +53,5 @@ class Server(endnode.EndPoint):
             #check receive buffer, if there is a NAK, send the package
             #lib.log_prefix(self.name, 'received nak, will send data later')
             #then, send a data package
+            self.stats.log(self.stats.TRY)
             self.send_msg(i)

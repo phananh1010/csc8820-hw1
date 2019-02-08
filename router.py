@@ -77,7 +77,7 @@ class Router(object):
                 
             #decide to drop data
             if self.drop(header.DROP_CHANCE, dat) == True:
-                lib.log_prefix_template(self.name, label, 'DROP packet', dat)
+                lib.log_prefix_template(self.name, label + ' DROP packet', dat)
                 continue #this line drops the data
             
             
