@@ -1,4 +1,3 @@
-Y=450
 PACKET_SIZE=9
 PACKET_CLOSE = 999999 #this packet notify server that connection can be closed now
 TEMPLATE = '{{0:0{}}}'.format(PACKET_SIZE)
