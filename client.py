@@ -35,8 +35,9 @@ class Client(endnode.EndPoint):
         return result
     
     def send_nak(self, nak_list):
-        np.random.shuffle(nak_list)
-        for item in nak_list[:header.CLIENT_NAKCOUNT]:
+        #np.random.shuffle(nak_list)
+        #for item in nak_list[:header.CLIENT_NAKCOUNT]:
+        for item in nak_list:#send all nak
             self.send_msg(item, msg='sent NAK')
             
     def handle_timeout(self):
