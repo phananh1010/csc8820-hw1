@@ -1,5 +1,6 @@
 import endnode
 import header
+import headerdll
 import lib
 import timeit
 
@@ -9,11 +10,11 @@ class Client(endnode.EndPoint):
     buf_recv = None
     
     def __init__(self, name, local_addr, local_port, dest_addr, dest_port):
-        self.buf_recv = [header.WINDOW_NODATA for i in range(header.Y)]
+        self.buf_recv = [header.WINDOW_NODATA for i in range(headerdll.Y)]
         super(Client, self).__init__(name, local_addr, local_port, dest_addr, dest_port)
     
     def can_escape(self):
-        if sum(self.buf_recv) == header.Y:
+        if sum(self.buf_recv) == headerdll.Y:
             return True
         else:
             return False

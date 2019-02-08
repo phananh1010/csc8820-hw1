@@ -5,6 +5,7 @@ import numpy as np
 
 import endnode
 import header
+import headerdll
 import statistic
 import lib
 
@@ -49,7 +50,7 @@ class Server(endnode.EndPoint):
             
     def push_data(self):
         #server push data to client in flows
-        for i in range(header.Y):            
+        for i in range(headerdll.Y):            
             #check receive buffer, if there is a NAK, send the package
             #lib.log_prefix(self.name, 'received nak, will send data later')
             #then, send a data package
