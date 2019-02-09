@@ -51,7 +51,7 @@ class EndPoint(object):#including client and server
         lib.log_prefix_template(self.name, msg, dat)
 
         #simulated delay
-        time.sleep(0.050)
+        time.sleep(header.SLEEP_SEND)
         
         
     def close(self):

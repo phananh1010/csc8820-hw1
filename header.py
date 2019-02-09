@@ -7,3 +7,5 @@ DROP_CHANCE = (4+7)*0.1*0.01 #my id is 002349134, Xiang id is 002400397
                   #drop chance = (4 + 7) * 0.01
 
 CLIENT_NAKCOUNT = 2
+
+SLEEP_SEND = 0.050
